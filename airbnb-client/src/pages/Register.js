@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate, Link as RouterLink } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import {
   Container,
   Box,
@@ -41,9 +44,6 @@ import {
   Facebook as FacebookIcon,
   Apple as AppleIcon,
 } from '@mui/icons-material';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { useAuth } from '../contexts/AuthContext';
 
 const validationSchema = Yup.object({
@@ -368,18 +368,17 @@ const Register = () => {
                   maxDate={new Date(new Date().setFullYear(new Date().getFullYear() - 18))}
                   openTo="year"
                   views={['year', 'month', 'day']}
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      fullWidth
-                      margin="normal"
-                      id="birthDate"
-                      name="birthDate"
-                      error={formik.touched.birthDate && Boolean(formik.errors.birthDate)}
-                      helperText={formik.touched.birthDate && formik.errors.birthDate}
-                      disabled={loading}
-                    />
-                  )}
+                  slotProps={{
+                    textField: {
+                      fullWidth: true,
+                      margin: "normal",
+                      id: "birthDate",
+                      name: "birthDate",
+                      error: formik.touched.birthDate && Boolean(formik.errors.birthDate),
+                      helperText: formik.touched.birthDate && formik.errors.birthDate,
+                      disabled: loading
+                    }
+                  }}
                 />
               </LocalizationProvider>
             </Grid>

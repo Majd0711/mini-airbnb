@@ -7,6 +7,8 @@ import {
   Dialog, DialogTitle, DialogContent, DialogActions, DialogContentText,
   Snackbar, Alert
 } from '@mui/material';
+import ImageGallery from 'react-image-gallery';
+import 'react-image-gallery/styles/css/image-gallery.css';
 import {
   ArrowBack, Favorite, FavoriteBorder, Share, LocationOn, Home,
   KingBed, Bathtub, Person, Wifi, Tv, AcUnit, Kitchen, LocalLaundryService,
@@ -16,8 +18,6 @@ import { format } from 'date-fns';
 import { useAuth } from '../contexts/AuthContext';
 import { roomAPI } from '../services/api';
 import ReservationForm from '../components/ReservationForm';
-import ImageGallery from 'react-image-gallery';
-import 'react-image-gallery/styles/css/image-gallery.css';
 
 const RoomDetails = () => {
   const { id } = useParams();

@@ -129,22 +129,20 @@ const ReservationForm = ({ price, onDateSelect, maxGuests = 10, sx }) => {
                 value={formik.values.checkInDate}
                 onChange={(date) => handleDateRangeSelect('checkInDate', date)}
                 minDate={new Date()}
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    fullWidth
-                    error={formik.touched.checkInDate && Boolean(formik.errors.checkInDate)}
-                    helperText={formik.touched.checkInDate && formik.errors.checkInDate}
-                    InputProps={{
-                      ...params.InputProps,
+                slotProps={{
+                  textField: {
+                    fullWidth: true,
+                    error: formik.touched.checkInDate && Boolean(formik.errors.checkInDate),
+                    helperText: formik.touched.checkInDate && formik.errors.checkInDate,
+                    InputProps: {
                       startAdornment: (
                         <InputAdornment position="start">
                           <EventIcon color="action" />
                         </InputAdornment>
                       ),
-                    }}
-                  />
-                )}
+                    }
+                  }
+                }}
               />
             </LocalizationProvider>
           </Grid>
@@ -158,22 +156,20 @@ const ReservationForm = ({ price, onDateSelect, maxGuests = 10, sx }) => {
                 onChange={(date) => handleDateRangeSelect('checkOutDate', date)}
                 minDate={formik.values.checkInDate ? addDays(formik.values.checkInDate, 1) : new Date()}
                 disabled={!formik.values.checkInDate}
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    fullWidth
-                    error={formik.touched.checkOutDate && Boolean(formik.errors.checkOutDate)}
-                    helperText={formik.touched.checkOutDate && formik.errors.checkOutDate}
-                    InputProps={{
-                      ...params.InputProps,
+                slotProps={{
+                  textField: {
+                    fullWidth: true,
+                    error: formik.touched.checkOutDate && Boolean(formik.errors.checkOutDate),
+                    helperText: formik.touched.checkOutDate && formik.errors.checkOutDate,
+                    InputProps: {
                       startAdornment: (
                         <InputAdornment position="start">
                           <EventIcon color="action" />
                         </InputAdornment>
                       ),
-                    }}
-                  />
-                )}
+                    }
+                  }
+                }}
               />
             </LocalizationProvider>
           </Grid>
